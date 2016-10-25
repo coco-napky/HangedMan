@@ -1,0 +1,5 @@
+package hanged;
+
+class Keyword {
+    
+}
