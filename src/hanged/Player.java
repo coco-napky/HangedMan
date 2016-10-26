@@ -16,4 +16,9 @@ class Player {
         this.username = username;
     }
 
+    @Override
+    public String toString() {
+        return "Player{" + "username=" + username + '}';
+    }
+   
 }
