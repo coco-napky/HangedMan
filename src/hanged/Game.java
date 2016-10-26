@@ -1,16 +1,18 @@
 package hanged;
 
+import java.util.List;
+
 class Game {
     private boolean gameover;
     private RoundRobin roundRobin;
-    private KeywordReader keywordReader;
+    private List<Keyword> keywords;
     private Display display;
     
     public Game( RoundRobin<Player> roundRobin,
-                 KeywordReader keywordReader, Display display) {
+                 List<Keyword> keywords, Display display) {
         this.gameover = false;
         this.roundRobin = roundRobin;
-        this.keywordReader = keywordReader;
+        this.keywords = keywords;
         this.display = display;
     }
 
