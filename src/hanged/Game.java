@@ -37,7 +37,7 @@ class Game {
     }
 
     boolean isRoundOver() {
-        return chances <= 0 || currentKeyword.isMatched();
+        return chances <= 0 || currentKeyword.isWordFinished();
     }
 
     boolean isGameOver() {
@@ -47,7 +47,7 @@ class Game {
         return false;
     }
     
-    void play(PlayerInput input) throws Exception{
+    void playTurn(PlayerInput input) throws Exception{
         
         if(isGameOver())
            throw new GameoverException("Game is over");
@@ -57,12 +57,11 @@ class Game {
 
         int failures = currentKeyword.matchLetters(input);
 
-        if(currentKeyword.isMatched()) {
+        if(currentKeyword.isWordFinished()) {
             success = true;
             currentPlayer.score++;
         }
         chances -= failures;
-            
     }
 
     public boolean checkResetRound() throws InputException{        
@@ -71,7 +70,8 @@ class Game {
             chances = 3;
             currentKeyword = null;
             setCurrentKeyword();
-            currentPlayer = roundRobin.next();
+            roundRobin.next();
+            currentPlayer = roundRobin.getCurrent();
             success = false;
             return true;
         }
@@ -87,8 +87,7 @@ class Game {
             setRandomKeyword();
         else
             setPlayerKeyword();
-      }
-        
+      }  
     }
 
     private void setPlayerKeyword() throws InputException {

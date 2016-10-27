@@ -5,12 +5,13 @@ import java.util.ArrayList;
 //Done: Single player mode
 //Done: Multiplayer un jugador seleccione la palabra
 
-//ToDo: Multiplayer mode
+//Todo: Multiplayer mode
 //Todo: Better variable/method names?
 //Todo: Refine Code if possible
-//BUG: Arreglar el bug de los suarios: 
+//BUG: Arreglar el bug de los usuarios: 
 //      al cambiar de usuario el primer jugador juega dos veces seguidas 
 //      y perdiendo 
+//Todo: Console Display responsibility?
 
 public class Main {
     public static void main(String[] args) {
@@ -26,8 +27,6 @@ public class Main {
             roundRobin.add(new Player("brandon"));
             roundRobin.add(new Player("david"));
             
-            // Todo: Console Display responsibility?
-         
             /*
             for(Keyword kw : keywords)
                 System.out.println(kw);
@@ -36,12 +35,11 @@ public class Main {
             Game game = new Game( roundRobin, keywords, display, consoleInput);
         
             while(!game.isGameOver()){
-                //Todo: Console Display responsibility?
                 System.out.println(game.getMatchedLetters());
                 System.out.println("Chances left: " + game.getChances());
                 
                 /*
-                    Las validaciones de game.play tiene que estar
+                    Las validaciones de game.playTurn tiene que estar
                     antes del player input.
                 */
                 if(game.checkResetRound())
@@ -52,21 +50,19 @@ public class Main {
             
                 
                 PlayerInput input = consoleInput.getPlayerInput();
-                game.play(input);
+                game.playTurn(input);
             
             
-                //Todo: Console Display responsibility?
                 if(game.isSuccess())
                 {
-                    for (Player player : roundRobin) {
+                    roundRobin.forEach((player) -> {
                         System.out.println(player.username + " " + player.score);
-                    }
+                    });
                     System.out.println("Te la ganaste, saludos (y)");
                 }
             }
             
         }catch(Exception e){
-            //Todo: Console Display responsibility?
             System.out.println(e.getMessage());
         }
     }

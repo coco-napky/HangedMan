@@ -5,7 +5,7 @@ import javafx.util.Pair;
 
 final class Keyword {
     ArrayList<Pair<Character, Boolean>> word;
-    private char hiddenCharacter;
+    final private char hiddenCharacter;
     Keyword(String word) {
         hiddenCharacter = '#';
         this.word = new ArrayList<>();
@@ -89,9 +89,7 @@ final class Keyword {
         return getLetter(index, true) == this.hiddenCharacter;  
     }
     
-    //all letters matched?
-    //Todo: better name?
-    boolean isMatched() {
+    boolean isWordFinished() {
         for (int i = 0; i < this.word.size(); i++)
           if(isLetterHidden(i))
               return false;
