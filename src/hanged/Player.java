@@ -3,6 +3,7 @@ package hanged;
 class Player {
 
     String username;
+    int score;
 
     public String getUsername() {
         return username;
@@ -12,6 +13,14 @@ class Player {
         this.username = username;
     }
 
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+    
     public Player(String username) {
         this.username = username;
     }

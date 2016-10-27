@@ -2,7 +2,7 @@ package hanged;
 
 import java.util.ArrayList;
 
-public class RoundRobin<T> extends ArrayList {
+public class RoundRobin<T> extends ArrayList<T> {
 
     public RoundRobin() {
         super();

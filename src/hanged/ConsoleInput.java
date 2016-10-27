@@ -18,6 +18,7 @@ class ConsoleInput implements Input {
         try {
             line = br.readLine();
         } catch (IOException ex) {
+        //    new Exception("", ex)
             throw new InputException(ex.getMessage());
         }
         return new PlayerInput(line);

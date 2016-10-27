@@ -63,13 +63,13 @@ final class Keyword {
     
 
     int matchLetters(PlayerInput input) {
-        String word = input.getWord();
+        String local = input.getWord();
         int failures = 0;
-        for (int i = 0; i < word.length(); i++) 
-            if(!isLetterMatch(word.charAt(i)))
+        for (int i = 0; i < local.length(); i++) 
+            if(!isLetterMatch(local.charAt(i)))
                ++failures;
             else
-                matchLetter(word.charAt(i));
+                matchLetter(local.charAt(i));
         return failures;
     }
 
